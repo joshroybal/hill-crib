@@ -1,12 +1,12 @@
 ************************************************************************
 C function finds length of character array sans trailing blanks
-************************************************************************     
+************************************************************************
       integer function fndlen(LL, buf)
       implicit none
       integer LL
       character buf(LL)
 C
-C local variables      
+C local variables
 C
       integer n
 
@@ -18,14 +18,14 @@ C
       end
 ************************************************************************
 C function returns index of matching character
-************************************************************************     
+************************************************************************
       integer function fndidx(C, alpha, ch)
       implicit none
       integer C
       character alpha(C)
       character ch
 C
-C local variables      
+C local variables
 C
       integer n
 
@@ -34,7 +34,7 @@ C
          n=n+1
       end do
       fndidx=n
-      end    
+      end
 ************************************************************************
 C subprogram
 ************************************************************************
@@ -50,7 +50,7 @@ C subprogram
       end
 ************************************************************************
 C subprogram
-************************************************************************     
+************************************************************************
       logical function isup(ch)
       implicit none
       character ch
@@ -63,7 +63,7 @@ C subprogram
       end
 ************************************************************************
 C subprogram
-************************************************************************     
+************************************************************************
       logical function isal(ch)
       implicit none
       character ch
@@ -71,14 +71,14 @@ C
 C functions
 C
       logical isup
-      logical islo      
+      logical islo
 
       if (isup(ch) .or. islo(ch)) then
          isal=.true.
       else
          isal=.false.
       end if
-      end      
+      end
 ************************************************************************
 C function returns lowercase of character ch if ch uppercase
 C returns ch otherwise
@@ -88,7 +88,7 @@ C returns ch otherwise
       character ch
 C
 C functions
-C      
+C
       logical isup
 
       if (isup(ch)) then
@@ -96,7 +96,7 @@ C
       else
          tolo=ch
       end if
-      end      
+      end
 ************************************************************************
 C function returns uppercase of character ch if ch uppercase
 C returns ch otherwise
@@ -106,7 +106,7 @@ C returns ch otherwise
       character ch
 C
 C functions
-C      
+C
       logical islo
 
       if (islo(ch)) then
@@ -117,7 +117,7 @@ C
       end
 ************************************************************************
 C subroutine creates mixing index
-************************************************************************ 
+************************************************************************
       subroutine selidx(C, n, arr, idx)
       implicit none
       integer C, n, arr(n), idx(n)
@@ -137,10 +137,10 @@ C
          end do
          if (k .gt. n) exit
       end do
-      end 
+      end
 ************************************************************************
 C subroutine mixes alphabet - same mix in single transposition ciphers
-************************************************************************ 
+************************************************************************
       subroutine mix(C, n, idx, alpha)
       implicit none
       integer C, n, idx(n)
@@ -159,7 +159,7 @@ C
       i=1
       j=0
       k=1
-      do while (k .le. C) 
+      do while (k .le. C)
          do while (idx(i)+j*n .le. C)
             tmp(k)=alpha(idx(i)+j*n)
             k=k+1
@@ -173,4 +173,4 @@ C
       do i=1,C
          alpha(i)=tmp(i)
       end do
-      end                  
+      end

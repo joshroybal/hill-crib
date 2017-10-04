@@ -1,7 +1,7 @@
 C program implements a crib dragging attack on simple 3x3 hill ciphers
 C this version assumes piped in filtered input from a shell terminal
 ************************************************************************
-      program ha3
+      program ha4
       implicit none
       integer C, BL, NDIM, P, SS, i, j, k, l, n, blk, row, col, s, gcd,
      1 detmod, samsiz, passno, eof
@@ -11,13 +11,13 @@ C this version assumes piped in filtered input from a shell terminal
       character*50 timstr
       character*80 line
       logical match
-      parameter(NDIM=2,BL=65536,C=26,P=13,SS=200)
+      parameter(NDIM=4,BL=65536,C=26,P=13,SS=200)
       integer A(NDIM,NDIM), B(NDIM,NDIM), KEY(NDIM,NDIM),
      & KEYINV(NDIM,NDIM), TMP(NDIM,NDIM), v(NDIM), x(NDIM), freqs(C),
      & TABLE(2**NDIM**2,NDIM,NDIM)
       double precision relfrq(C)
       character buf(BL), pt(25), plntxt(SS)
-      data freqs/26*0/, relfrq/.0781,.0128,.0293,.0411,.1305,.0288,
+      data freqs/26*0/, relfrq/.0781,.0128,.0293,.0419,.1305,.0288,
      & .0139,.0565,.0677,.0023,.0042,.036,.0262,.0728,.0821,.0215,.0014,
      & .0664,.0646,.0902,.0277,.01,.0149,.003,.0151,.0009/
 C
@@ -41,7 +41,7 @@ C
 C get command line parameters
 C
       call getarg(1, crib)
-      read (crib,'(5A1)') (pt(i),i=1,5)
+      read (crib,'(19A1)') (pt(i),i=1,19)
 C
 C get piped in input into buffer
 C
